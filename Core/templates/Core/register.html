@@ -1,0 +1,85 @@
+{% extends 'Core/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+
+
+<!-- <h1>Register</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" name="" id="" value="Register">
+</form> -->
+
+<div class="wrapper d-flex align-items-center justify-content-center w-80 mt-5">
+    <div class="login">
+
+        <h1 class="text-center">Register</h1>
+
+        <form action="" method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-group mb-2">
+                <label for="username" class="form-label">Username</label>
+                
+
+                {% if form.username.errors %}
+
+                    <div style="position: relative;" >
+                        {{form.username|add_class:'form-control'}}
+                        <button style="position: absolute;top: 0;right: 0; color: red; padding: .375rem .75rem; border: 0; background-color: rgba(255, 255, 255, 0); border-radius: 5px;" type="button"  data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Errors" data-bs-content= "{% for error in form.username.errors %} {{error}} {% endfor %}" >
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </button>
+                    </div>
+                
+                {% else %}
+
+                    {{form.username|add_class:'form-control'}}
+
+                {% endif %}
+                
+                
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="password1" class="form-label">Password</label>
+                
+                
+                {% if form.password2.errors %}
+
+                    <div style="position: relative;" >
+                        {{form.password2|add_class:'form-control'}}
+                        <button style="position: absolute;top: 0;right: 0; color: red; padding: .375rem .75rem; border: 0; background-color: rgba(255, 255, 255, 0); border-radius: 5px;" type="button"  data-bs-toggle="popover" data-bs-trigger="hover" data-bs-title="Errors" data-bs-content= " {% for error in form.password2.errors %}  {{error}} {% endfor %}" >
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </button>
+                    </div>
+                    
+            
+                {% else %}
+
+                    {{form.password1|add_class:'form-control'}}
+
+                 {% endif %}
+               
+            </div>
+            
+
+            <div class="form-group mb-2">
+                <label for="password2" class="form-label">Confirm Password</label>
+                {{form.password2|add_class:'form-control'}}
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 mt-2">Register</button>
+        </form>
+    </div>
+
+</div>
+
+<p style="color: rgb(183, 183, 183);" class="text-center">Already have an account?  <a style="text-decoration: none;" href="{% url 'login' %}">Login</a></p>
+
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'Core/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}ToDoApp{% endblock title %}
+
+{% block content %}
+
+<div class="contenedor">
+
+    <div class="header-form">
+        <a style="text-decoration: none;" href="{% url 'tasks' %}">&#8592; Back</a>
+    </div>
+
+    <div class="wrapper d-flex flex-column align-items-center justify-content-center">
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+
+            <div class="form-group mb-2">
+                    
+                <label for="title" class="form-label">Title</label>
+                {{form.title|add_class:'form-control'}}
+            
+                <label for="password" class="form-label">Description</label>
+                {{form.description|add_class:'form-control'}}
+
+                <label for="password" class="form-label">Completed</label>
+                {{form.complete}}
+
+
+            </div>
+
+            <input class="btn btn-outline-secondary" type="submit" name="" id="" value="Submit">
+        
+        </form>
+        
+    </div>
+
+</div>
+
+
+{% endblock content %}

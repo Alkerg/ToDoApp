@@ -1,0 +1,55 @@
+{% extends 'Core/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+
+    <!-- <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" name="" id="" value="Login">
+
+    </form> -->
+
+
+    <div class="wrapper d-flex flex-column align-items-center justify-content-center w-80">
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger alert-dismissible fade show w-25" role="alert">
+            Incorrect username or password.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+
+        <div class="login">
+
+            <h1 class="text-center">Login</h1>
+
+            <form action="" method="POST">
+
+                {% csrf_token %}
+                
+                <div class="form-group mb-2">
+                    
+                    <label for="username" class="form-label">Username</label>
+                    {{form.username|add_class:'form-control'}}
+                
+                    <label for="password" class="form-label">Password</label>
+                    {{form.password|add_class:'form-control'}}
+
+
+                </div>
+                
+                <button type="submit" class="btn btn-success w-100 mt-2">Login</button>
+
+            </form>
+        </div>
+
+    </div>
+    <p style="color: rgb(183, 183, 183);" class="text-center">Don't have an account?  <a style="text-decoration: none;" href="{% url 'register' %}">Register</a></p>
+
+
+
+{% endblock content %}
